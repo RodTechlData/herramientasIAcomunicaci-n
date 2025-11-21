@@ -1,0 +1,272 @@
+import React, { useState } from 'react';
+import { 
+  Brain, 
+  MessageCircle, 
+  Zap, 
+  Target, 
+  BarChart3, 
+  Layers, 
+  UserCheck, 
+  Cpu, 
+  Network,
+  ChevronDown,
+  Globe
+} from 'lucide-react';
+
+const Card = ({ title, children, icon: Icon, colorClass, defaultOpen = true }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className={`relative bg-gradient-to-br p-6 rounded-xl shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-[1.01] ${isOpen ? 'from-slate-800 to-slate-900' : 'from-slate-800 to-slate-900'} border-t-4 border-l-4 ${colorClass}`}>
+      <div 
+        className="flex items-center justify-between cursor-pointer mb-4" 
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="flex items-center">
+          <div className={`p-3 rounded-full mr-4 bg-opacity-20 ${colorClass}`}>
+            <Icon size={24} className="text-white" />
+          </div>
+          <h3 className="text-xl font-bold text-white tracking-wide">{title}</h3>
+        </div>
+        <ChevronDown 
+          className={`text-indigo-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} 
+          size={24} 
+        />
+      </div>
+      <div 
+        className={`overflow-hidden transition-max-height duration-700 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}
+        style={{ transitionProperty: 'max-height, opacity' }}
+      >
+        <div className="text-slate-300 space-y-3 pt-2">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const DetailItem = ({ text }) => (
+  <div className="flex items-start bg-slate-700 bg-opacity-40 p-3 rounded-lg border border-slate-600 hover:border-indigo-500 transition-colors duration-300">
+    <span className="inline-block w-2 h-2 mt-2 mr-3 bg-indigo-400 rounded-full flex-shrink-0 animate-pulse"></span>
+    <span className="text-sm md:text-base text-slate-200">{text}</span>
+  </div>
+);
+
+export default function CommunicationInfographicNeoFuturista() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-800 font-sans text-slate-50 p-4 md:p-8 relative overflow-hidden">
+      {/* Background Gradients/Blobs for Neo-futuristic feel */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-indigo-700 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-fuchsia-700 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-cyan-700 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+
+
+      {/* Header */}
+      <header className="max-w-6xl mx-auto text-center mb-16 relative z-10 animate-fade-in-down">
+        <div className="inline-block p-2 px-4 rounded-full bg-indigo-700 text-indigo-200 font-semibold text-sm mb-4 border border-indigo-500 shadow-lg">
+          Transformación Digital Futura
+        </div>
+        <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight relative text-cyan-400"
+            style={{ 
+              textShadow: '0 0 10px rgba(0,255,255,0.6), 0 0 20px rgba(0,255,255,0.4)',
+              WebkitTextStroke: '1px white' // Reborde blanco
+            }}>
+          La Comunicación en la Era de la <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Inteligencia Artificial</span>
+        </h1>
+        <p className="text-lg text-slate-300 max-w-2xl mx-auto border-b border-indigo-500 pb-4">
+          Cómo la IA redefine el proceso comunicativo, maximizando la eficiencia, el impacto y la medición sin perder el toque humano en un futuro cercano.
+        </p>
+      </header>
+
+      <main className="max-w-6xl mx-auto space-y-16 relative z-10">
+        
+        {/* Section 1: Definición y Rol */}
+        <section className="grid md:grid-cols-2 gap-10">
+          <div className="bg-gradient-to-br from-blue-900 to-indigo-950 rounded-2xl p-8 border border-blue-700 shadow-2xl transform hover:rotate-1 transition-transform duration-300">
+            <div className="flex items-center mb-6">
+              <MessageCircle className="text-blue-400 mr-3" size={36} />
+              <h2 className="text-2xl font-bold text-white">El Concepto de Comunicar</h2>
+            </div>
+            <ul className="space-y-4">
+              <li className="flex items-center bg-slate-800 p-3 rounded-lg shadow-inner border border-slate-700">
+                <span className="font-semibold text-blue-300 mr-2">Proceso:</span> <span className="text-slate-200">Emisor → Receptor</span>
+              </li>
+              <li className="flex items-center bg-slate-800 p-3 rounded-lg shadow-inner border border-slate-700">
+                <span className="font-semibold text-blue-300 mr-2">Objetivo:</span> <span className="text-slate-200">Busca Comprensión, Acción o Transformación</span>
+              </li>
+              <li className="flex items-center bg-slate-800 p-3 rounded-lg shadow-inner border border-slate-700">
+                <span className="font-semibold text-blue-300 mr-2">Implica:</span> <span className="text-slate-200">Lenguaje verbal, visual y tecnología</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-900 to-fuchsia-950 rounded-2xl p-8 border border-purple-700 shadow-2xl transform hover:-rotate-1 transition-transform duration-300">
+            <div className="flex items-center mb-6">
+              <Brain className="text-purple-400 mr-3" size={36} />
+              <h2 className="text-2xl font-bold text-white">IA como Herramienta Estratégica</h2>
+            </div>
+            <ul className="space-y-4">
+              <li className="bg-slate-800 p-3 rounded-lg shadow-inner border border-slate-700">
+                <strong className="text-purple-300">Conjunto de Sistemas:</strong> <span className="text-slate-200">Aprende, Analiza y Genera Contenido.</span>
+              </li>
+              <li className="bg-slate-800 p-3 rounded-lg shadow-inner border border-slate-700">
+                <strong className="text-purple-300">Potencia:</strong> <span className="text-slate-200">Aumenta la eficiencia y la creatividad humana.</span>
+              </li>
+              <li className="bg-slate-800 p-3 rounded-lg shadow-inner border border-slate-700">
+                <strong className="text-purple-300">Función Clave:</strong> <span className="text-slate-200">Actúa como un "Orquestador Estratégico" de la comunicación.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Section 2: Maximización (The 3 Pillars) - 3D effect + Accordion */}
+        <section>
+          <div className="flex items-center justify-center mb-10">
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
+            <h2 className="mx-4 text-3xl font-extrabold text-white uppercase tracking-wider text-shadow-glow">Ventajas y Maximización</h2>
+            <div className="h-px w-24 bg-gradient-to-l from-transparent via-indigo-500 to-transparent"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Efficiency */}
+            <Card title="Maximización de la Eficiencia" icon={Zap} colorClass="border-amber-500" defaultOpen={false}>
+              <DetailItem text="Toma de Decisiones Automatizadas para agilidad." />
+              <DetailItem text="Selección inteligente de la vía correcta de comunicación." />
+              <DetailItem text="Automatización Multicanal (integrando mundo digital y físico)." />
+            </Card>
+
+            {/* Impact */}
+            <Card title="Maximización del Impacto" icon={Target} colorClass="border-emerald-500" defaultOpen={false}>
+              <DetailItem text="Segmentación Precisa basada en modelos predictivos." />
+              <DetailItem text="Personalización Avanzada ajustando tono y formato al usuario." />
+              <DetailItem text="Orquestación Omnicanal cubriendo todo el recorrido del usuario." />
+            </Card>
+
+            {/* Measurement */}
+            <Card title="Maximización de la Medición" icon={BarChart3} colorClass="border-cyan-500" defaultOpen={false}>
+              <DetailItem text="Medición de Impacto real y no solo vanidad." />
+              <DetailItem text="Métricas Digitales unificadas y Paneles de Control." />
+              <DetailItem text="Optimización constante del Retorno de Inversión (ROI)." />
+            </Card>
+          </div>
+        </section>
+
+        {/* Section 3: Omnicanalidad - 3D effect */}
+        <section className="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl p-8 text-white relative shadow-3d-dark border border-indigo-700 transform hover:scale-[1.005] transition-transform duration-300">
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="md:w-1/2">
+              <h3 className="text-3xl font-bold mb-4 flex items-center text-cyan-300">
+                <Network className="mr-3 text-cyan-500" size={32} />
+                Ecosistema de Herramientas <span className="text-indigo-400 ml-2">(Omnicanal)</span>
+              </h3>
+              <p className="text-slate-300 mb-4 leading-relaxed">
+                La IA no opera en el vacío. Se integra en una arquitectura compleja de soportes y canales para entregar el mensaje correcto de manera fluida.
+              </p>
+            </div>
+            <div className="md:w-1/2 flex gap-4 flex-wrap justify-center md:justify-end">
+              <div className="bg-slate-700 px-5 py-3 rounded-full text-sm font-medium border border-indigo-600 text-indigo-200 shadow-md hover:bg-indigo-700 transition-colors duration-200">Elementos Centrales de Arquitectura</div>
+              <div className="bg-slate-700 px-5 py-3 rounded-full text-sm font-medium border border-indigo-600 text-indigo-200 shadow-md hover:bg-indigo-700 transition-colors duration-200">Tipos de Mensajes</div>
+              <div className="bg-slate-700 px-5 py-3 rounded-full text-sm font-medium border border-indigo-600 text-indigo-200 shadow-md hover:bg-indigo-700 transition-colors duration-200">Canales de Entrega</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Conclusión Profesional - 3D effect */}
+        <section className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-3d-light border-t-8 border-cyan-600 p-8 md:p-12 text-center transform hover:scale-[1.005] transition-transform duration-300">
+          <div className="flex justify-center mb-6">
+            <div className="bg-cyan-700 p-5 rounded-full shadow-lg">
+              <UserCheck size={48} className="text-white animate-pulse-slow" />
+            </div>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-8 tracking-wide">La Conclusión Profesional</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div className="p-5 bg-slate-800 rounded-lg border border-cyan-500 shadow-inner hover:bg-slate-700 transition-colors duration-200">
+              <h4 className="font-bold text-cyan-400 mb-2 text-lg">No Reemplaza</h4>
+              <p className="text-sm text-slate-300">La IA no sustituye al comunicador, es una herramienta de soporte vital.</p>
+            </div>
+            <div className="p-5 bg-slate-800 rounded-lg border border-indigo-500 shadow-inner hover:bg-slate-700 transition-colors duration-200">
+              <h4 className="font-bold text-indigo-400 mb-2 text-lg">Potencia el Alcance</h4>
+              <p className="text-sm text-slate-300">Amplifica la capacidad humana para transformar, conectar y cautivar.</p>
+            </div>
+            <div className="p-5 bg-slate-800 rounded-lg border border-purple-500 shadow-inner hover:bg-slate-700 transition-colors duration-200">
+              <h4 className="font-bold text-purple-400 mb-2 text-lg">Exige Habilidades</h4>
+              <p className="text-sm text-slate-300">Requiere creatividad, conocimiento técnico y, crucialmente, sensibilidad social y ética.</p>
+            </div>
+            <div className="p-5 bg-slate-800 rounded-lg border border-green-500 shadow-inner hover:bg-slate-700 transition-colors duration-200">
+              <h4 className="font-bold text-green-400 mb-2 text-lg">Garantía de Calidad</h4>
+              <p className="text-sm text-slate-300">Ayuda a asegurar que el mensaje sea relevante, inclusivo, eficaz y resonante.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="max-w-6xl mx-auto mt-16 text-center text-slate-400 text-sm py-8 border-t border-slate-700 relative z-10">
+        <p className="mb-2">
+          <Globe size={16} className="inline-block mr-2 text-indigo-400" />
+          <a href="https://www.dataflowia.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-cyan-400 transition-colors duration-200">www.dataflowia.com</a> 
+          <span className="mx-3 text-slate-600">|</span> 
+          <a href="mailto:contacto@dataflowia.com" className="text-indigo-400 hover:text-cyan-400 transition-colors duration-200">contacto@dataflowia.com</a>
+        </p>
+        <p className="text-slate-500">&copy; 2025 DataFlowIA. Todos los derechos reservados.</p>
+        <p className="mt-6 text-xs text-slate-600">Infografía generada basada en el Mapa Mental de Comunicación en la Era de la IA.</p>
+      </footer>
+
+      {/* Tailwind CSS Custom Styles (for animations and text-shadow) */}
+      <style>{`
+        .animate-fade-in-down {
+          animation: fadeInDown 1s ease-out forwards;
+        }
+        @keyframes fadeInDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .text-shadow-glow {
+          text-shadow: 0 0 8px rgba(129, 140, 248, 0.7), 0 0 15px rgba(129, 140, 248, 0.5);
+        }
+
+        .shadow-3d-dark {
+          box-shadow: 
+            inset 0 0 15px rgba(0, 0, 0, 0.5), /* Inner dark shadow */
+            0 20px 40px rgba(0, 0, 0, 0.6),    /* Outer deep shadow */
+            0 0 60px rgba(79, 70, 229, 0.3);  /* Outer blue glow */
+        }
+        .shadow-3d-light {
+          box-shadow: 
+            inset 0 0 10px rgba(255, 255, 255, 0.1), /* Inner light glow */
+            0 15px 30px rgba(0, 0, 0, 0.5),    /* Outer deep shadow */
+            0 0 50px rgba(6, 182, 212, 0.3);  /* Outer cyan glow */
+        }
+
+        .animate-blob {
+          animation: blob 7s infinite ease-in-out;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        @keyframes blob {
+          0%, 100% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .animate-pulse-slow {
+          animation: pulseSlow 3s infinite ease-in-out;
+        }
+        @keyframes pulseSlow {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* Custom transition for accordion */
+        .transition-max-height {
+          transition: max-height 0.7s ease-in-out;
+        }
+
+      `}</style>
+    </div>
+  );
+}
